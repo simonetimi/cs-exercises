@@ -23,7 +23,25 @@ class HashMap {
     return hashKey % this.bucketsArray.length;
   }
 
+  resize() {
+    const oldArray = this.bucketsArray;
+    this.capacity *= 2; // Double the size
+    this.bucketsArray = new Array(this.capacity).fill(null);
+    this.occupied = 0;
+
+    oldArray.forEach((bucket) => {
+      let current = bucket;
+      while (current !== null) {
+        this.add(current.key, current.value); // Keys are re-hashed
+        current = current.next;
+      }
+    });
+  }
+
   add(key, value) {
+    if (this.occupied / this.capacity >= this.loadFactor) {
+      this.resize();
+    }
     const bucket = this.hash(key);
     if (!this.has(key)) {
       // if the hashmap doesn't contain key, add a new node
