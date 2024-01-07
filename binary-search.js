@@ -1,4 +1,4 @@
-export default function binarySearch(array, elementToFind, start = 0, end = array.length - 1) {
+function binarySearch(array, elementToFind, start = 0, end = array.length - 1) {
   if (start > end) {
     return 'Element is not on the array!';
   }

@@ -10,7 +10,7 @@ function merge(firstHalf, secondHalf) {
   return [...result, ...firstHalf, ...secondHalf];
 }
 
-export default function mergeSort(array) {
+function mergeSort(array) {
   if (array.length <= 1) {
     return array;
   }

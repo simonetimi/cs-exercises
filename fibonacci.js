@@ -1,4 +1,4 @@
-export default function fib(n) {
+function fib(n) {
   if (n <= 1) {
     return n;
   }
